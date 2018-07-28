@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,qBAAU;EACR,UAAU,EAAE,OAAO;AAErB,+BAAoB;EAClB,UAAU,EAAE,OAAO",
+"sources": ["vant.scss"],
+"names": [],
+"file": "vant.css"
+}
