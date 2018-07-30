@@ -10,7 +10,7 @@
   import basepage from '../../components/common/basepage';
   import http from "../../utils/http";
   import Comment from "../../components/comment/index";
-  import utils from "../../utils/utils";
+  import objectUtils from "../../utils/objectUtils";
   import GetCode from "../../components/getCode/index";
   export default {
     name: "test",

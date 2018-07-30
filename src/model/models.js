@@ -1,4 +1,4 @@
-import utils from "../utils/utils";
+import objectUtils from "../utils/objectUtils";
 
 class BaseBean {
   constructor(data) {
@@ -11,7 +11,7 @@ class BaseBean {
   }
 
   paresData(data) {
-    if (!utils.isEmpty(data)) {
+    if (!objectUtils.isEmpty(data)) {
       Object.assign(this, data);
     }
   }

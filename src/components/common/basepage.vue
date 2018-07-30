@@ -12,7 +12,6 @@
         from: null,
         needLogin: false,
         loading: false,
-        userinfo: this.$store.state.userinfo,
         pageStatus: "init",
         responseData: {}
       }
@@ -68,8 +67,10 @@
       this.initData();
     },
     mounted: function () {
+      this.$log.debug('base mounted')
       if (this.needLogin && !this.isLogin()) {
         this.goLogin(this.$route.fullPath,true)
+      }else {
       }
     },
     beforeRouteEnter(to, from, next) {
@@ -96,23 +97,13 @@
       // 可以访问组件实例 `this`
       // console.log("leave:"+from.path+to.path)
       next();
-    }
+    },
 
-    // beforeCreate() {
-    //   console.log("beforeCreate========")
-    //   console.log(this.title)
-    //   console.log(this.$el)
-    // },
-    // created() {
-    //
-    //   console.log("created========")
-    //   console.log(this.title)
-    //   console.log(this.$el)
-    // },
-    // beforeMount: function () {
-    //   console.log("beforeMount========")
-    //   console.log(this.title)
-    //   console.log(this.$el)
-    // },
+    beforeCreate() {
+      this.$log.debug('beforeCreate')
+    },
+    beforeMount() {
+      this.$log.debug('beforeMount')
+    },
   }
 </script>

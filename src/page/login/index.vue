@@ -6,7 +6,7 @@
       <van-field v-model="password" label="密码" placehold="请输入密码"/>
     </van-cell-group>
     <!--<van-col class="margin-vertical" >-->
-      <van-button class="margin-vertical" type="primary" size="large" @click="register">登录</van-button>
+      <van-button class="margin-vertical" type="primary" size="large" @click="login">登录</van-button>
     <!--</van-col>-->
   </basepageview>
 </template>
@@ -31,7 +31,7 @@
       rightClick(){
         this.$router.replace({path:"/register",query:{returnUrl:this.$route.query.returnUrl}})
       },
-      register() {
+      login() {
         if ("" != this.mobile && "" != this.password) {
           http.requestJson({
             url:"/user/login",
@@ -45,8 +45,7 @@
             this.goNext()
           })
         } else {
-          this.$toast("dfdf");
-          // Toast('我是提示文案，建议不超过十五字~');
+          this.$toast("输入手机号和密码");
         }
       },
       goNext(){

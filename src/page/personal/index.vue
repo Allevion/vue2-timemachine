@@ -3,9 +3,9 @@
     <div class="van-hairline--top-bottom margin-vertical">
       <van-cell class="head-image-block" is-link to="/nickname">
         <div class="head-content">
-          {{userinfo.nickname}}
+          {{$store.state.userinfo.nickname}}
           <div style="text-align: right;flex: 1">
-            <img class="img-head" :src="userinfo.head_image"/>
+            <img class="img-head" :src="$store.state.userinfo.head_image"/>
           </div>
         </div>
       </van-cell>
@@ -13,7 +13,7 @@
 
     <div class="van-hairline--top-bottom margin-vertical">
       <van-cell title="nickname" value="修改头像" is-link to="/nickname"/>
-      <van-cell title="sex" :value="sexName(userinfo.sex)" is-link to="/sex"/>
+      <van-cell title="sex" :value="sexName($store.state.userinfo.sex)" is-link to="/sex"/>
       <van-cell title="birthday" value="1990-01-01" is-link to="/birthday"/>
     </div>
     <van-cell class="margin-vertical" title="sign" value="nerver mind" is-link to="/sign"/>

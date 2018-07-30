@@ -17,7 +17,7 @@
     </div>
 
     <div class="van-hairline--top-bottom margin-vertical">
-      <van-cell title="设置" is-link to="/setting"/>
+      <van-cell title="设置" is-link @click="goSetting"/>
     </div>
 
 
@@ -34,7 +34,7 @@
 
 <script>
   import basepage from '../../components/common/basepage';
-  import utils from "../../utils/utils";
+  import objectUtils from "../../utils/objectUtils";
   export default {
     name: "mine",
     mixins:[basepage],
@@ -52,21 +52,23 @@
       },
       goPersonal(){
         this.$router.push("/personal")
+      },
+      goSetting(){
       }
     },
     computed:{
       headimg(){
-        if (utils.isEmpty(this.userinfo.head_image)){
+        if (objectUtils.isEmpty(this.$store.state.userinfo.head_image)){
           return 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=164802939,3427154249&fm=27&gp=0.jpg'
         } else {
-          return this.userinfo.head_image
+          return this.$store.state.userinfo.head_image
         }
       },
       username(){
-        if (utils.isEmpty(this.userinfo.nickname)){
+        if (objectUtils.isEmpty(this.$store.state.userinfo.nickname)){
           return '点击登录'
         } else {
-          return this.userinfo.nickname
+          return this.$store.state.userinfo.nickname
         }
       }
     }

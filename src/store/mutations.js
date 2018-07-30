@@ -1,3 +1,5 @@
+import EventBus from "../utils/eventBus";
+
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const UPDATE_USERINFO = 'UPDATE_USERINFO';
@@ -17,8 +19,8 @@ const mutations = {
   },
   [LOGOUT]: (state) => {
     //登出的时候要清除token
-    state.token = null;
-    state.userinfo = null;
+    state.token = "";
+    state.userinfo = new Object;
     window.sessionStorage.removeItem('token');
   },
   [UPDATE_USERINFO]: (state, data) => {
