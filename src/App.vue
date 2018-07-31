@@ -7,7 +7,6 @@
 <script>
   import objectUtils from "./utils/objectUtils";
   import http from "./utils/http";
-  import EventBus, {UPDATE_USERINFO} from "./utils/eventBus";
 
   export default {
     components: {},

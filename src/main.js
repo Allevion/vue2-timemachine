@@ -25,10 +25,10 @@ import VueLogger from 'vuejs-logger'
 const options = {
   isEnabled: process.env.debug,
   // required ['debug', 'info', 'warn', 'error', 'fatal']
-  logLevel : 'debug',
+  logLevel : 'info',
   stringifyArguments : false,
-  showLogLevel : true,
-  showMethodName : false,
+  showLogLevel : false,
+  showMethodName : true,
   separator: '|',
   showConsoleColors: true
 };

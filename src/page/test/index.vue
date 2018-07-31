@@ -2,7 +2,8 @@
   <basepageview v-bind="navData">
     <comment></comment>
     <van-button @click="test">{{text}}</van-button>
-    <get-code></get-code>
+    <button ref="nextbutton" >nextbutton</button>
+    <upload-pic v-model="showPicSelector"></upload-pic>
   </basepageview>
 </template>
 
@@ -12,15 +13,17 @@
   import Comment from "../../components/comment/index";
   import objectUtils from "../../utils/objectUtils";
   import GetCode from "../../components/getCode/index";
+  import UploadPic from "../../components/uploadPic/index";
   export default {
     name: "test",
-    components: {GetCode, Comment},
+    components: {UploadPic, GetCode, Comment},
     mixins: [basepage],
     data(){
       return {
         navData:{
           title:"test",
-        }
+        },
+        showPicSelector:false,
       }
     },
     methods:{
@@ -34,15 +37,16 @@
           })
       },
       test(){
-        this.$log.info('debug log');
-        this.$log.warn('test log');
-        this.$log.error('error',123)
-        // console.log(utils.isEmpty(false))
+        // this.$log.info(this.$refs.selectPhoto)
+        // this.$log.info(this.$refs.selectPhoto.$el.children[0])
+        // this.$refs.selectPhoto.$el.children[0].click()
+        this.showPicSelector = true
+
       }
     },
     computed:{
       text(){
-        return process.apiHost
+
       }
     }
   }
