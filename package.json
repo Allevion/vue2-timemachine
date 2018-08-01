@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "qiniu-js": "^2.4.0",
     "vant": "^1.1.10",
     "vue": "^2.1.0",
     "vue-router": "^2.1.1",

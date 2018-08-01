@@ -1,4 +1,3 @@
-import EventBus from "../utils/eventBus";
 
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';

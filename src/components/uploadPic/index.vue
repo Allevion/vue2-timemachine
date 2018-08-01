@@ -1,13 +1,14 @@
 <template>
   <div>
     <van-uploader ref="selectPhoto" :after-read="onSelect"></van-uploader>
+    <van-uploader ref="takePhoto" :after-read="onTake" capture="camera" ></van-uploader>
+    <!--<input ref="takePhoto" type="file"  accept="image/*" capture="camera" size="30">-->
     <van-actionsheet v-model="show" :actions="actions">
     </van-actionsheet>
   </div>
 </template>
 
 <script>
-  import {Popup} from 'vant'
   export default {
     name: "UploadPic",
     props:{
@@ -30,23 +31,26 @@
     },
     watch:{
       value(val){
-        this.show = val;
+        this.show = val
+      },
+      show(val){
+        this.$emit('input',val)
       }
     },
     methods:{
       takePhoto(){
-
+        this.$refs.takePhoto.$el.children[0].click()
       },
       selectPhoto(){
         this.$refs.selectPhoto.$el.children[0].click()
       },
       onSelect(file){
-        this.value = false
-        this.show = false
+        alert(file)
+        this.$emit('input',false)
         this.$log.info(file)
       },
-      onTake(){
-
+      onTake(file){
+        alert(file)
       },
     }
   }
