@@ -1,4 +1,3 @@
-
 var config = require('../config');
 if (!process.env.NODE_ENV) process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV);
 var path = require('path');
@@ -16,26 +15,28 @@ var server = express();
 var compiler = webpack(webpackConfig);
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
-    publicPath: webpackConfig.output.publicPath,
-    stats: {
-        colors: true,
-        chunks: false
-    }
+  publicPath: webpackConfig.output.publicPath,
+  stats: {
+    colors: true,
+    chunks: false
+  }
 });
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler);
-    // force page reload when html-webpack-plugin template changes
-compiler.plugin('compilation', function(compilation) {
-    compilation.plugin('html-webpack-plugin-after-emit', function(data, cb) {
-        hotMiddleware.publish({
-            action: 'reload'
-        });
-        cb()
-    })
+// force page reload when html-webpack-plugin template changes
+compiler.plugin('compilation', function (compilation) {
+  compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
+    hotMiddleware.publish({
+      action: 'reload'
+    });
+    cb()
+  })
 });
 
-if(config.dev.proxy){
-  server.use(config.dev.proxy)
+if (config.dev.proxy) {
+  for (var i = 1; i < config.dev.proxy.length; i++) {
+    server.use(config.dev.proxy[i])
+  }
 }
 
 // handle fallback for HTML5 history API
@@ -52,15 +53,15 @@ server.use(hotMiddleware);
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory);
 server.use(staticPath, express.static('./static'));
 
-module.exports = server.listen(port, function(err) {
-    if (err) {
-        console.log(err);
-        return
-    }
-    var uri = 'http://localhost:' + port;
-    console.log('Listening at ' + uri + '\n');
+module.exports = server.listen(port, function (err) {
+  if (err) {
+    console.log(err);
+    return
+  }
+  var uri = 'http://localhost:' + port;
+  console.log('Listening at ' + uri + '\n');
 
-    if (process.env.NODE_ENV !== 'testing') {
-        //opn(uri)
-    }
+  if (process.env.NODE_ENV !== 'testing') {
+    //opn(uri)
+  }
 });

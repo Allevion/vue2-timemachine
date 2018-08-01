@@ -47,7 +47,7 @@ function getReqConcig(reqConfig) {
   return {
     url: reqConfig.url,
     method: reqConfig.method ? reqConfig.method : 'post',
-    baseURL: process.apiHost,
+    baseURL: reqConfig.baseURL ? reqConfig.baseURL : process.apiHost,
     params: reqConfig.params && reqConfig.method == 'get' ? reqConfig.params : {},
     data: reqConfig.params ? qs.stringify(reqConfig.params) : "",
     // paramsSerializer: function (params) {
